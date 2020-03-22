@@ -1,0 +1,20 @@
+{
+  "name": "Wireguard Client Tools",
+  "version": "0.1.0",
+  "slug": "wireguard_client_tools",
+  "description": "Tools for setting rules of Route table and Iptables. Wireguard addons is required.",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "once",
+  "boot": "manual",
+  "host_network": true,
+  "privileged": ["NET_ADMIN"],
+  "options": {
+      "destination_ip": ["192.168.0.0/24"],
+      "wireguard_port": 51820
+  },
+  "schema": {
+      "destination_ip": ["str"],
+      "wireguard_port": "port"
+  },
+  "image": "netcookies/{arch}-addon-wireguard-client-tools",
+}

@@ -1,6 +1,6 @@
 {
   "name": "Wireguard Client Tools",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "slug": "wireguard_client_tools",
   "description": "Tools for setting rules of Route table and Iptables. Wireguard addons is required.",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],

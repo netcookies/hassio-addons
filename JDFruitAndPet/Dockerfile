@@ -4,8 +4,7 @@ MAINTAINER Isulew <netcookies@gmail.com>
 
 ENV LANG C.UTF-8
 
-COPY run.sh /
-COPY modifyCronFile.sh /
+COPY rootfs /
 
 RUN set -ex \
         && apk update && apk upgrade\
@@ -20,5 +19,3 @@ RUN git clone https://github.com/lxk0301/scripts /scripts \
         && npm install
 
 WORKDIR /scripts
-
-CMD [ "/run.sh" ]

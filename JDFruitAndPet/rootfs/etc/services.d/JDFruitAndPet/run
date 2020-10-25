@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bashio
+
+declare name
+declare value
+
+bashio::log.info "Initializing..."
+
+# Load custom environment variables
+rm -rf /setEnv.sh
+for var in $(bashio::config 'env_vars|keys'); do
+    name=$(bashio::config "env_vars[${var}].name")
+    value=$(bashio::config "env_vars[${var}].value")
+    bashio::log.info "Setting ${name} to ${value}"
+    echo "${name}=""'""${value}""'" >> /setEnv.sh
+done
+
+cd /;./modifyCronFile.sh
+
+exec crond -f

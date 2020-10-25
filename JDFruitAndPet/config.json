@@ -1,60 +1,110 @@
 {
   "name": "JD Fruit and Pet",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "slug": "jd_fruit_and_pet",
   "description": "Automate scripts of JD Fruit and Pet.",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "application",
   "boot": "auto",
   "options": {
-      "JD_COOKIE": null,
-      "DD_BOT_TOKEN": "",
-      "DD_BOT_SECRET": "",
-      "PLANT_BEAN_SHARECODES": "",
-      "FRUITSHARECODES": "",
-      "PETSHARECODES": "",
-      "SUPERMARKET_SHARECODES": "",
-      "PET_NOTIFY_CONTROL": false,
-      "FRUIT_NOTIFY_CONTROL": false,
-      "JD_JOY_REWARD_NOTIFY": false,
-      "JOY_FEED_COUNT": 10,
-      "JOY_HELP_FEED": false,
-      "JOY_RUN_FLAG": true,
-      "MARKET_COIN_TO_BEANS": 1000,
-      "MARKET_REWARD_NOTIFY": false,
-      "SUPERMARKET_UPGRADE": true,
-      "BUSINESS_CIRCLE_JUMP": true,
-      "SUPERMARKET_LOTTERY": true,
-      "FRUIT_BEAN_CARD": true,
-      "UN_SUBSCRIBES": "",
-      "JD_DEBUG": true,
       "CRONTAB_LIST_FILE": "crontab_list.sh",
-      "ENABLE_JD_BEAN": false
+      "ENABLE_JD_BEAN": false,
+      "env_vars": [
+          {
+              "name": "JD_COOKIE",
+              "value": ""
+          },
+          {
+              "name": "DD_BOT_TOKEN",
+              "value": ""
+          },
+          {
+              "name": "DD_BOT_SECRET",
+              "value": ""
+          },
+          {
+              "name": "PLANT_BEAN_SHARECODES",
+              "value": ""
+          },
+          {
+              "name": "FRUITSHARECODES",
+              "value": ""
+          },
+          {
+              "name": "PETSHARECODES",
+              "value": ""
+          },
+          {
+              "name": "SUPERMARKET_SHARECODES",
+              "value": ""
+          },
+          {
+              "name": "PET_NOTIFY_CONTROL",
+              "value": "false"
+          },
+          {
+              "name": "FRUIT_NOTIFY_CONTROL",
+              "value": "false"
+          },
+          {
+              "name": "JD_JOY_REWARD_NOTIFY",
+              "value": "false"
+          },
+          {
+              "name": "JOY_FEED_COUNT",
+              "value": "10"
+          },
+          {
+              "name": "JOY_HELP_FEED",
+              "value": "false"
+          },
+          {
+              "name": "JOY_RUN_FLAG",
+              "value": "true"
+          },
+          {
+              "name": "MARKET_COIN_TO_BEANS",
+              "value": "1000"
+          },
+          {
+              "name": "MARKET_REWARD_NOTIFY",
+              "value": "false"
+          },
+          {
+              "name": "SUPERMARKET_UPGRADE",
+              "value": "true"
+          },
+          {
+              "name": "BUSINESS_CIRCLE_JUMP",
+              "value": "true"
+          },
+          {
+              "name": "SUPERMARKET_LOTTERY",
+              "value": "true"
+          },
+          {
+              "name": "FRUIT_BEAN_CARD",
+              "value": "true"
+          },
+          {
+              "name": "UN_SUBSCRIBES",
+              "value": ""
+          },
+          {
+              "name": "JD_DEBUG",
+              "value": "true"
+          }
+      ]
   },
   "schema": {
-      "JD_COOKIE": "str",
-      "DD_BOT_TOKEN": "str?",
-      "DD_BOT_SECRET": "str?",
-      "PLANT_BEAN_SHARECODES": "str?",
-      "FRUITSHARECODES": "str?",
-      "PETSHARECODES": "str?",
-      "SUPERMARKET_SHARECODES": "str?",
-      "PET_NOTIFY_CONTROL": "bool",
-      "FRUIT_NOTIFY_CONTROL": "bool",
-      "JD_JOY_REWARD_NOTIFY": "bool",
-      "JOY_FEED_COUNT": "int",
-      "JOY_HELP_FEED": "bool",
-      "JOY_RUN_FLAG": "bool",
-      "MARKET_COIN_TO_BEANS": "int(0,1000)",
-      "MARKET_REWARD_NOTIFY": "bool",
-      "SUPERMARKET_UPGRADE": "bool",
-      "BUSINESS_CIRCLE_JUMP": "bool",
-      "SUPERMARKET_LOTTERY": "bool",
-      "FRUIT_BEAN_CARD": "bool",
-      "UN_SUBSCRIBES": "str?",
-      "JD_DEBUG": "bool",
       "CRONTAB_LIST_FILE": "str",
-      "ENABLE_JD_BEAN": "bool"
+      "ENABLE_JD_BEAN": "bool",
+      "env_vars": [ 
+          {
+              "name": "match(^([A-Z0-9_])+$)",
+              "value": "str"
+          }
+      ]
   },
   "image": "netcookies/{arch}-addon-jd-fruit-and-pet"
 }

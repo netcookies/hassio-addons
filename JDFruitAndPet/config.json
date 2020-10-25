@@ -1,6 +1,6 @@
 {
   "name": "JD Fruit and Pet",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "slug": "jd_fruit_and_pet",
   "description": "Automate scripts of JD Fruit and Pet.",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
@@ -27,7 +27,7 @@
       "SUPERMARKET_LOTTERY": true,
       "FRUIT_BEAN_CARD": true,
       "UN_SUBSCRIBES": "",
-      "JD_DEBUG": false,
+      "JD_DEBUG": true,
       "CRONTAB_LIST_FILE": "crontab_list.sh",
       "ENABLE_JD_BEAN": false
   },

@@ -2,7 +2,7 @@
 
 CRONTAB_LIST_FILE=$(bashio::config 'CRONTAB_LIST_FILE')
 ENABLE_JD_BEAN=$(bashio::config 'ENABLE_JD_BEAN')
-CNF=/scripts/docker/${CRONTAB_LIST_FILE}
+CNF=/${CRONTAB_LIST_FILE}
 
 ENVS="JD_COOKIE=$(bashio::config 'JD_COOKIE') \
 DD_BOT_TOKEN=$(bashio::config 'DD_BOT_TOKEN') \
@@ -27,6 +27,12 @@ UN_SUBSCRIBES=$(bashio::config 'UN_SUBSCRIBES') \
 JD_DEBUG=$(bashio::config 'JD_DEBUG')"
 
 bashio::log.info "Loading Cron file: ${CRONTAB_LIST_FILE}"
+
+# custom crond files
+if [ -f "/${CRONTAB_LIST_FILE}" ]; then
+    [ ! -d "/${CRONTAB_LIST_FILE}" ] && rm -rf /${CRONTAB_LIST_FILE}
+fi
+cp /scripts/docker/crontab_list.sh ${CNF}
 
 # Redirect logs to docker stdout & stderr
 sed -i 's/>> \/scripts\/logs\/.*.log 2>&1/> \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2/g' ${CNF}

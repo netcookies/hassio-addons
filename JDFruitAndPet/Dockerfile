@@ -9,7 +9,7 @@ COPY modifyCronFile.sh /
 
 RUN set -ex \
         && apk update && apk upgrade\
-        && apk add --no-cache tzdata git nodejs npm\
+        && apk add --no-cache tzdata git nodejs npm sed\
         && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
         && echo "Asia/Shanghai" > /etc/timezone \
         && chmod a+x /*.sh

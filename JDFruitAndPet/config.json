@@ -33,5 +33,6 @@
       "JD_DEBUG": "bool",
       "CRONTAB_LIST_FILE": "str",
       "ENABLE_JD_BEAN": "bool"
-  }
+  },
+  "image": "netcookies/{arch}-addon-jd-fruit-and-pet"
 }

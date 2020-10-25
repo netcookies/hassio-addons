@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bashio
 
+CRONTAB_LIST_FILE=$(bashio::config "CRONTAB_LIST_FILE")
+ENABLE_JD_BEAN=$(bashio::config "ENABLE_JD_BEAN")
 echo ${CRONTAB_LIST_FILE}
 echo ${ENABLE_JD_BEAN}
 

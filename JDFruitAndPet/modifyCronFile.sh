@@ -10,9 +10,20 @@ DD_BOT_SECRET=$(bashio::config 'DD_BOT_SECRET') \
 PLANT_BEAN_SHARECODES=$(bashio::config 'PLANT_BEAN_SHARECODES') \
 FRUITSHARECODES=$(bashio::config 'FRUITSHARECODES') \
 PETSHARECODES=$(bashio::config 'PETSHARECODES') \
-JOY_FEED_COUNT=$(bashio::config 'JOY_FEED_COUNT') \
 SUPERMARKET_SHARECODES=$(bashio::config 'SUPERMARKET_SHARECODES') \
+PET_NOTIFY_CONTROL=$(bashio::config 'PET_NOTIFY_CONTROL') \
+FRUIT_NOTIFY_CONTROL=$(bashio::config 'FRUIT_NOTIFY_CONTROL') \
+JD_JOY_REWARD_NOTIFY=$(bashio::config 'JD_JOY_REWARD_NOTIFY') \
+JOY_FEED_COUNT=$(bashio::config 'JOY_FEED_COUNT') \
+JOY_HELP_FEED=$(bashio::config 'JOY_HELP_FEED') \
+JOY_RUN_FLAG=$(bashio::config 'JOY_RUN_FLAG') \
 MARKET_COIN_TO_BEANS=$(bashio::config 'MARKET_COIN_TO_BEANS') \
+MARKET_REWARD_NOTIFY=$(bashio::config 'MARKET_REWARD_NOTIFY') \
+SUPERMARKET_UPGRADE=$(bashio::config 'SUPERMARKET_UPGRADE') \
+BUSINESS_CIRCLE_JUMP=$(bashio::config 'BUSINESS_CIRCLE_JUMP') \
+SUPERMARKET_LOTTERY=$(bashio::config 'SUPERMARKET_LOTTERY') \
+FRUIT_BEAN_CARD=$(bashio::config 'FRUIT_BEAN_CARD') \
+UN_SUBSCRIBES=$(bashio::config 'UN_SUBSCRIBES') \
 JD_DEBUG=$(bashio::config 'JD_DEBUG')"
 
 bashio::log.info "Loading Cron file: ${CRONTAB_LIST_FILE}"
@@ -36,3 +47,4 @@ sed -i "s|node|${ENVS} node|" ${CNF}
 
 # cat ${CNF}
 crontab ${CNF}
+crontab -l

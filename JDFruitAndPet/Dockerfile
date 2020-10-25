@@ -1,0 +1,24 @@
+ARG BUILD_FROM
+FROM $BUILD_FROM
+MAINTAINER Isulew <netcookies@gmail.com>
+
+ENV LANG C.UTF-8
+
+COPY run.sh /
+COPY modifyCronFile.sh /
+
+RUN set -ex \
+        && apk update && apk upgrade\
+        && apk add --no-cache tzdata git nodejs npm\
+        && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+        && echo "Asia/Shanghai" > /etc/timezone \
+        && chmod a+x /run.sh
+
+RUN git clone https://github.com/lxk0301/scripts /scripts \
+        && cd /scripts \
+        && mkdir logs \
+        && npm install
+
+WORKDIR /scripts
+
+CMD [ "/run.sh" ]

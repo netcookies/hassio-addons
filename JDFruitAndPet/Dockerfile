@@ -12,7 +12,7 @@ RUN set -ex \
         && apk add --no-cache tzdata git nodejs npm\
         && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
         && echo "Asia/Shanghai" > /etc/timezone \
-        && chmod a+x /run.sh
+        && chmod a+x /*.sh
 
 RUN git clone https://github.com/lxk0301/scripts /scripts \
         && cd /scripts \

@@ -1,9 +1,9 @@
 {
   "name": "JD Fruit and Pet",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "slug": "jd_fruit_and_pet",
   "description": "Automate scripts of JD Fruit and Pet.",
-  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "arch": ["amd64"],
   "startup": "application",
   "boot": "auto",
   "options": {

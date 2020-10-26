@@ -1,5 +1,5 @@
 ### Requirement
-1. (addon-wireguard) [https://github.com/hassio-addons/addon-wireguard]
+1. [addon-wireguard](https://github.com/hassio-addons/addon-wireguard)
 
 ### Usage
 1. Install add-on

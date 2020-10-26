@@ -2,8 +2,8 @@
 
 An homeassistant.io addons repository
 
-## Installing third-party add-ons
-####description: "Instructions on how to get started using third-party add-ons."
+### Installing third-party add-ons
+#### description: "Instructions on how to get started using third-party add-ons."
 
 Home Assistant allows anyone to create add-on repositories to share their add-ons easily. To try this locally, you can use our example add-on repository at
 

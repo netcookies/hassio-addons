@@ -1,6 +1,6 @@
 {
   "name": "JD Fruit and Pet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "slug": "jd_fruit_and_pet",
   "description": "Automate scripts of JD Fruit and Pet.",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
@@ -9,33 +9,19 @@
   "options": {
       "CRONTAB_LIST_FILE": "crontab_list.sh",
       "ENABLE_JD_BEAN": false,
+      "notify": {
+          "PUSH_KEY": "",
+          "BARK_PUSH": "",
+          "BARK_SOUND": "",
+          "TG_BOT_TOKEN": "",
+          "TG_USER_ID": "",
+          "DD_BOT_TOKEN": "",
+          "DD_BOT_SECRET": "",
+          "IGOT_PUSH_KEY": ""
+      },
       "env_vars": [
           {
               "name": "JD_COOKIE",
-              "value": ""
-          },
-          {
-              "name": "DD_BOT_TOKEN",
-              "value": ""
-          },
-          {
-              "name": "DD_BOT_SECRET",
-              "value": ""
-          },
-          {
-              "name": "PLANT_BEAN_SHARECODES",
-              "value": ""
-          },
-          {
-              "name": "FRUITSHARECODES",
-              "value": ""
-          },
-          {
-              "name": "PETSHARECODES",
-              "value": ""
-          },
-          {
-              "name": "SUPERMARKET_SHARECODES",
               "value": ""
           },
           {
@@ -110,17 +96,135 @@
               "name": "JD_DEBUG",
               "value": "true"
           }
-      ]
+      ],
+      "sharecodes": {
+          "primary": {
+              "fruit": [
+                  {
+                      "name": "EASY_TO_REMMBER",
+                      "value": "code"
+                  }
+              ],
+              "pet": [
+                  {
+                      "name": "EASY_TO_REMMBER",
+                      "value": "code"
+                  }
+              ],
+              "plantbean": [
+                  {
+                      "name": "EASY_TO_REMMBER",
+                      "value": "code"
+                  }
+              ],
+              "supermarket": [
+                  {
+                      "name": "EASY_TO_REMMBER",
+                      "value": "code"
+                  }
+              ]
+          },
+          "secondary": {
+              "fruit": [
+                  {
+                      "name": "EASY_TO_REMMBER",
+                      "value": "code"
+                  }
+              ],
+              "pet": [
+                  {
+                      "name": "EASY_TO_REMMBER",
+                      "value": "code"
+                  }
+              ],
+              "plantbean": [
+                  {
+                      "name": "EASY_TO_REMMBER",
+                      "value": "code"
+                  }
+              ],
+              "supermarket": [
+                  {
+                      "name": "EASY_TO_REMMBER",
+                      "value": "code"
+                  }
+              ]
+          }
+      }
   },
   "schema": {
       "CRONTAB_LIST_FILE": "str",
       "ENABLE_JD_BEAN": "bool",
+      "notify": {
+          "PUSH_KEY": "str",
+          "BARK_PUSH": "str",
+          "BARK_SOUND": "str",
+          "TG_BOT_TOKEN": "str",
+          "TG_USER_ID": "str",
+          "DD_BOT_TOKEN": "str",
+          "DD_BOT_SECRET": "str",
+          "IGOT_PUSH_KEY": "str"
+      },
       "env_vars": [ 
           {
               "name": "match(^([A-Z0-9_])+$)",
               "value": "str"
           }
-      ]
+      ],
+      "sharecodes": {
+          "primary": {
+              "fruit": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)",
+                      "value": "str"
+                  }
+              ],
+              "pet": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)",
+                      "value": "str"
+                  }
+              ],
+              "plantbean": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)",
+                      "value": "str"
+                  }
+              ],
+              "supermarket": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)",
+                      "value": "str"
+                  }
+              ]
+          },
+          "secondary": {
+              "fruit": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)",
+                      "value": "str"
+                  }
+              ],
+              "pet": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)",
+                      "value": "str"
+                  }
+              ],
+              "plantbean": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)",
+                      "value": "str"
+                  }
+              ],
+              "supermarket": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)",
+                      "value": "str"
+                  }
+              ]
+          }
+      }
   },
   "image": "netcookies/{arch}-addon-jd-fruit-and-pet"
 }

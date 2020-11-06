@@ -1,6 +1,6 @@
 {
   "name": "JD Fruit and Pet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "slug": "jd_fruit_and_pet",
   "description": "Automate scripts of JD Fruit and Pet.",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
@@ -37,6 +37,22 @@
           {
               "name": "SUPERMARKET_SHARECODES",
               "value": ""
+          },
+          {
+              "name": "JD_BEAN_STOP",
+              "value": ""
+          },
+          {
+              "name": "CDN_JD_DAILYBONUS",
+              "value": "true"
+          },
+          {
+              "name": "JD_BEAN_SIGN_STOP_NOTIFY",
+              "value": "false"
+          },
+          {
+              "name": "JD_BEAN_SIGN_NOTIFY_SIMPLE",
+              "value": "false"
           },
           {
               "name": "PET_NOTIFY_CONTROL",

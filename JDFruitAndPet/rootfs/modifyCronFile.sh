@@ -29,7 +29,7 @@ if [ ! ${ENABLE_JD_BEAN} ]; then
 fi
 
 # add environment each cron task
-sed -i "s|node|${ENVS} node|" ${CNF}
+sed -i "s|node|cd /scripts; ${ENVS} node|" ${CNF}
 
 # cat ${CNF}
 crontab ${CNF}

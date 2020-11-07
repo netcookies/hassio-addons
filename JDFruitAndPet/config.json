@@ -86,7 +86,21 @@
               "name": "JD_DEBUG",
               "value": "true"
           }
-      ]
+      ],
+      "sharecodes": {
+          "primary": {
+              "fruit": [],
+              "pet": [],
+              "plantbean": [],
+              "supermarket": []
+          },
+          "secondary": {
+              "fruit": [],
+              "pet": [],
+              "plantbean": [],
+              "supermarket": []
+          }
+      }
   },
   "schema": {
       "CRONTAB_LIST_FILE": "str",
@@ -101,12 +115,66 @@
           "DD_BOT_SECRET": "str?",
           "IGOT_PUSH_KEY": "str?"
       },
-      "env_vars": [ 
+      "env_vars": [
           {
               "name": "match(^([A-Z0-9_])+$)",
               "value": "str"
           }
-      ]
+      ],
+      "sharecodes": {
+          "primary": {
+              "fruit": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)?",
+                      "value": "str?"
+                  }
+              ],
+              "pet": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)?",
+                      "value": "str?"
+                  }
+              ],
+              "plantbean": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)?",
+                      "value": "str?"
+                  }
+              ],
+              "supermarket": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)?",
+                      "value": "str?"
+                  }
+              ]
+          },
+          "secondary": {
+              "fruit": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)?",
+                      "value": "str?"
+                  }
+              ],
+              "pet": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)?",
+                      "value": "str?"
+                  }
+              ],
+              "plantbean": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)?",
+                      "value": "str?"
+                  }
+              ],
+              "supermarket": [
+                  {
+                      "name": "match(^([A-Z0-9_])+$)?",
+                      "value": "str?"
+                  }
+              ]
+          }
+      }
   },
   "image": "netcookies/{arch}-addon-jd-fruit-and-pet"
 }

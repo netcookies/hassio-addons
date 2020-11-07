@@ -1,8 +1,5 @@
 #!/usr/bin/with-contenv bashio
 
-declare name
-declare value
-
 bashio::log.info "Initializing..."
 
 cd /;./modifyCronFile.sh

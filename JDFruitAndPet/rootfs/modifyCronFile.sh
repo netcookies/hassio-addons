@@ -60,30 +60,24 @@ crontab ${CNF}
 
 bashio::log.info "Updating SendNotify.js"
 NOTIFYFN=/scripts/sendNotify.js
-if [ ! -z "${SCKEY}" ] && [ "null" != "${SCKEY}" ]; then
-    sed -i "s|^let SCKEY.*|let SCKEY = \'${SCKEY}\';|" ${NOTIFYFN}
-fi
-if [ ! -z "${BARK_PUSH}" ] && [ "null" != "${BARK_PUSH}" ]; then
-    sed -i "s|^let BARK_PUSH.*|let BARK_PUSH = \'${BARK_PUSH}\';|" ${NOTIFYFN}
-fi
-if [ ! -z "${BARK_SOUND}" ] && [ "null" != "${BARK_SOUND}" ]; then
-    sed -i "s|^let BARK_SOUND.*|let BARK_SOUND = \'${BARK_SOUND}\';|" ${NOTIFYFN}
-fi
-if [ ! -z "${TG_BOT_TOKEN}" ] && [ "null" != "${TG_BOT_TOKEN}" ]; then
-    sed -i "s|^let TG_BOT_TOKEN.*|let TG_BOT_TOKEN = \'${TG_BOT_TOKEN}\';|" ${NOTIFYFN}
-fi
-if [ ! -z "${TG_USER_ID}" ] && [ "null" != "${TG_USER_ID}" ]; then
-    sed -i "s|^let TG_USER_ID.*|let TG_USER_ID = \'${TG_USER_ID}\';|" ${NOTIFYFN}
-fi
-if [ ! -z "${DD_BOT_TOKEN}" ] && [ "null" != "${DD_BOT_TOKEN}" ]; then
-    sed -i "s|^let DD_BOT_TOKEN.*|let DD_BOT_TOKEN = \'${DD_BOT_TOKEN}\';|" ${NOTIFYFN}
-fi
-if [ ! -z "${DD_BOT_SECRET}" ] && [ "null" != "${DD_BOT_SECRET}" ]; then
-    sed -i "s|^let DD_BOT_SECRET.*|let DD_BOT_SECRET = \'${DD_BOT_SECRET}\';|" ${NOTIFYFN}
-fi
-if [ ! -z "${IGOT_PUSH_KEY}" ] && [ "null" != "${IGOT_PUSH_KEY}" ]; then
-    sed -i "s|^let IGOT_PUSH_KEY.*|let IGOT_PUSH_KEY = \'${IGOT_PUSH_KEY}\';|" ${NOTIFYFN}
-fi
+
+function setNotify() {
+    FN=$1
+    NOTIFYKEY=$2
+    NOTIFYVAL=$3
+    if [ ! -z "${NOTIFYVAL}" ] && [ "null" != "${NOTIFYVAL}" ]; then
+        sed -i "s|^let ${NOTIFYKEY}.*|let ${NOTIFYKEY} = \'${NOTIFYVAL}\';|" ${FN}
+    fi
+}
+
+setNotify "$NOTIFYFN" "SCKEY" "${SCKEY}"
+setNotify "$NOTIFYFN" "BARK_PUSH" "${BARK_PUSH}"
+setNotify "$NOTIFYFN" "BARK_SOUND" "${BARK_SOUND}"
+setNotify "$NOTIFYFN" "TG_BOT_TOKEN" "${TG_BOT_TOKEN}"
+setNotify "$NOTIFYFN" "TG_USER_ID" "${TG_USER_ID}"
+setNotify "$NOTIFYFN" "DD_BOT_TOKEN" "${DD_BOT_TOKEN}"
+setNotify "$NOTIFYFN" "DD_BOT_SECRET" "${DD_BOT_SECRET}"
+setNotify "$NOTIFYFN" "IGOT_PUSH_KEY" "${IGOT_PUSH_KEY}"
 
 # Load ShareCodes
 bashio::log.info "Updating *ShareCodes*.js"
@@ -91,51 +85,32 @@ FFN=/scripts/jdFruitShareCodes.js
 PFN=/scripts/jdPetShareCodes.js
 PBFN=/scripts/jdPlantBeanShareCodes.js
 SMFN=/scripts/jdSuperMarketShareCodes.js
+
+function setShareCodes () {
+    FN=$1 # file name
+    SHARETYPE=$2 # ex: Fruit
+    BACKUPVAR=$3 # ex: 535a7bfc56e1468e8c09f2657ea04e3b
+    CODES=""
+    LENGTH=$(bashio::config "sharecodes.${SHARETYPE,,}|length")
+    [ ${LENGTH} -lt 2 ] && LENGTH=2
+    let LENGTH-=1
+    bashio::log.info "Setting ${SHARETYPE} Share Codes..."
+    sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${FN}
+    sed -i "1s|^|\]\n|" ${FN}
+    for var in $(seq 0 ${LENGTH}); do
+        value=$(bashio::config "sharecodes.${SHARETYPE,,}[${var}]")
+        [ "${value}" == "null" ] && value="${BACKUPVAR}"
+        CODES=${CODES}"  '"${value}"',\n"
+    done
+    sed -i "1s|^|${CODES}|" ${FN}
+    sed -i "1s|^|let ${SHARETYPE}ShareCodes = \[\n|" ${FN}
+}
+
 # FruitShareCodes
-bashio::log.info "Setting Fruit Share Codes..."
-sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${FFN}
-sed -i "1s|^|\]\n|" ${FFN}
-value=$(bashio::config "sharecodes.fruit[1]")
-[ "${value}" == "null" ] && value='535a7bfc56e1468e8c09f2657ea04e3b'
-sed -i "1s|^|  \'${value}\'\n|" ${FFN}
-value=$(bashio::config "sharecodes.fruit[0]")
-[ "${value}" == "null" ] && value='535a7bfc56e1468e8c09f2657ea04e3b'
-sed -i "1s|^|  \'${value}\'\,\n|" ${FFN}
-sed -i "1s|^|let FruitShareCodes = \[\n|" ${FFN}
-
+setShareCodes "${FFN}" "Fruit" "535a7bfc56e1468e8c09f2657ea04e3b"
 # PetShareCodes
-bashio::log.info "Setting Pet Share Codes..."
-sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${PFN}
-sed -i "1s|^|\]\n|" ${PFN}
-value=$(bashio::config "sharecodes.pet[1]")
-[ "${value}" == "null" ] && value="MTE1NDQ5MzYwMDAwMDAwMzgyNDA5NTU="
-sed -i "1s|^|  \'${value}\'\n|" ${PFN}
-value=$(bashio::config "sharecodes.pet[0]")
-[ "${value}" == "null" ] && value="MTE1NDQ5MzYwMDAwMDAwMzgyNDA5NTU="
-sed -i "1s|^|  \'${value}\'\,\n|" ${PFN}
-sed -i "1s|^|let PetShareCodes = \[\n|" ${PFN}
-
+setShareCodes "${PFN}" "Pet" "MTE1NDQ5MzYwMDAwMDAwMzgyNDA5NTU="
 # PlantBeanShareCodes
-bashio::log.info "Setting PlantBean Share Codes..."
-sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${PBFN}
-sed -i "1s|^|\]\n|" ${PBFN}
-value=$(bashio::config "sharecodes.plantbean[1]")
-[ "${value}" == "null" ] && value='7i2k65oy4qkh53m4dkp6ybeg6y'
-sed -i "1s|^|  \'${value}\'\n|" ${PBFN}
-value=$(bashio::config "sharecodes.plantbean[0]")
-[ "${value}" == "null" ] && value='7i2k65oy4qkh53m4dkp6ybeg6y'
-sed -i "1s|^|  \'${value}\'\,\n|" ${PBFN}
-sed -i "1s|^|let PlantBeanShareCodes = \[\n|" ${PBFN}
-
+setShareCodes "${PBFN}" "PlantBean" "7i2k65oy4qkh53m4dkp6ybeg6y"
 # SuperMarketShareCodes
-bashio::log.info "Setting SuperMarket Share Codes..."
-sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${SMFN}
-sed -i "1s|^|\]\n|" ${SMFN}
-value=$(bashio::config "sharecodes.supermarket[1]")
-[ "${value}" == "null" ] && value='eU9YaejjYv4g8T2EwnsVhQ'
-sed -i "1s|^|  \'${value}\'\n|" ${SMFN}
-value=$(bashio::config "sharecodes.supermarket[0]")
-[ "${value}" == "null" ] && value='eU9YaejjYv4g8T2EwnsVhQ'
-sed -i "1s|^|  \'${value}\'\,\n|" ${SMFN}
-sed -i "1s|^|let SuperMarketShareCodes = \[\n|" ${SMFN}
-
+setShareCodes "${SMFN}" "SuperMarket" "eU9YaejjYv4g8T2EwnsVhQ"

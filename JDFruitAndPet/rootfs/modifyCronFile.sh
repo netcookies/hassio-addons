@@ -60,28 +60,28 @@ crontab ${CNF}
 
 bashio::log.info "Updating SendNotify.js"
 NOTIFYFN=/scripts/sendNotify.js
-if [ ! -z "${SCKEY}" ]; then
+if [ ! -z "${SCKEY}" ] && [ "null" != "${SCKEY}" ]; then
     sed -i "s|^let SCKEY.*|let SCKEY = \'${SCKEY}\';|" ${NOTIFYFN}
 fi
-if [ ! -z "${BARK_PUSH}" ]; then
+if [ ! -z "${BARK_PUSH}" ] && [ "null" != "${BARK_PUSH}" ]; then
     sed -i "s|^let BARK_PUSH.*|let BARK_PUSH = \'${BARK_PUSH}\';|" ${NOTIFYFN}
 fi
-if [ ! -z "${BARK_SOUND}" ]; then
+if [ ! -z "${BARK_SOUND}" ] && [ "null" != "${BARK_SOUND}" ]; then
     sed -i "s|^let BARK_SOUND.*|let BARK_SOUND = \'${BARK_SOUND}\';|" ${NOTIFYFN}
 fi
-if [ ! -z "${TG_BOT_TOKEN}" ]; then
+if [ ! -z "${TG_BOT_TOKEN}" ] && [ "null" != "${TG_BOT_TOKEN}" ]; then
     sed -i "s|^let TG_BOT_TOKEN.*|let TG_BOT_TOKEN = \'${TG_BOT_TOKEN}\';|" ${NOTIFYFN}
 fi
-if [ ! -z "${TG_USER_ID}" ]; then
+if [ ! -z "${TG_USER_ID}" ] && [ "null" != "${TG_USER_ID}" ]; then
     sed -i "s|^let TG_USER_ID.*|let TG_USER_ID = \'${TG_USER_ID}\';|" ${NOTIFYFN}
 fi
-if [ ! -z "${DD_BOT_TOKEN}" ]; then
+if [ ! -z "${DD_BOT_TOKEN}" ] && [ "null" != "${DD_BOT_TOKEN}" ]; then
     sed -i "s|^let DD_BOT_TOKEN.*|let DD_BOT_TOKEN = \'${DD_BOT_TOKEN}\';|" ${NOTIFYFN}
 fi
-if [ ! -z "${DD_BOT_SECRET}" ]; then
+if [ ! -z "${DD_BOT_SECRET}" ] && [ "null" != "${DD_BOT_SECRET}" ]; then
     sed -i "s|^let DD_BOT_SECRET.*|let DD_BOT_SECRET = \'${DD_BOT_SECRET}\';|" ${NOTIFYFN}
 fi
-if [ ! -z "${IGOT_PUSH_KEY}" ]; then
+if [ ! -z "${IGOT_PUSH_KEY}" ] && [ "null" != "${IGOT_PUSH_KEY}" ]; then
     sed -i "s|^let IGOT_PUSH_KEY.*|let IGOT_PUSH_KEY = \'${IGOT_PUSH_KEY}\';|" ${NOTIFYFN}
 fi
 

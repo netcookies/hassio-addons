@@ -44,7 +44,7 @@ sed -i 's/>> \/scripts\/logs\/.*.log 2>&1/> \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2
 sed -i '/crontab/d' ${CNF}
 
 # add this scripts to crontab
-sed -i 's/\(.*\)git.*pull.*/\1cd \/;.\/modifyCronFile.sh > \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2/g' ${CNF}
+sed -i 's/\(.*\)git.*pull.*/30 \*\/1 \* \* \* cd \/;.\/modifyCronFile.sh > \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2/g' ${CNF}
 
 # enable JD Bean sign 
 if [ ! ${ENABLE_JD_BEAN} ]; then

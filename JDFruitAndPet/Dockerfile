@@ -3,18 +3,18 @@ FROM $BUILD_FROM
 MAINTAINER Isulew <netcookies@gmail.com>
 
 ENV LANG C.UTF-8
-ENV TZ CST-8
-
-COPY rootfs /
+ENV TZ Asia/Shanghai
 
 RUN set -ex \
         && apk update && apk upgrade\
         && apk add --no-cache tzdata git nodejs npm sed\
-        && chmod a+x /*.sh
+
+COPY rootfs /
 
 RUN git clone https://github.com/lxk0301/scripts /scripts \
         && cd /scripts \
         && mkdir logs \
         && npm install
+        && chmod a+x /*.sh
 
 WORKDIR /scripts

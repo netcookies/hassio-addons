@@ -37,6 +37,9 @@ if [ -f "/${CRONTAB_LIST_FILE}" ]; then
 fi
 cp /scripts/docker/crontab_list.sh ${CNF}
 
+# Force timezone to CST-8
+sed -i "1s|^|CRON_TZ\=\'CST\-8\'\n|" ${CNF}
+
 # Redirect logs to docker stdout & stderr
 sed -i 's/>> \/scripts\/logs\/.*.log 2>&1/> \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2/g' ${CNF}
 

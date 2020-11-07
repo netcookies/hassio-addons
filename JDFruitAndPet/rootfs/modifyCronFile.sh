@@ -61,28 +61,28 @@ crontab ${CNF}
 bashio::log.info "Updating SendNotify.js"
 NOTIFYFN=/scripts/sendNotify.js
 if [ ! -z "${SCKEY}" ]; then
-    sed -i "s|^let SCKEY.*|let SCKEY = ${SCKEY};|" ${NOTIFYFN}
+    sed -i "s|^let SCKEY.*|let SCKEY = \'${SCKEY}\';|" ${NOTIFYFN}
 fi
 if [ ! -z "${BARK_PUSH}" ]; then
-    sed -i "s|^let BARK_PUSH.*|let BARK_PUSH = ${BARK_PUSH};|" ${NOTIFYFN}
+    sed -i "s|^let BARK_PUSH.*|let BARK_PUSH = \'${BARK_PUSH}\';|" ${NOTIFYFN}
 fi
 if [ ! -z "${BARK_SOUND}" ]; then
-    sed -i "s|^let BARK_SOUND.*|let BARK_SOUND = ${BARK_SOUND};|" ${NOTIFYFN}
+    sed -i "s|^let BARK_SOUND.*|let BARK_SOUND = \'${BARK_SOUND}\';|" ${NOTIFYFN}
 fi
 if [ ! -z "${TG_BOT_TOKEN}" ]; then
-    sed -i "s|^let TG_BOT_TOKEN.*|let TG_BOT_TOKEN = ${TG_BOT_TOKEN};|" ${NOTIFYFN}
+    sed -i "s|^let TG_BOT_TOKEN.*|let TG_BOT_TOKEN = \'${TG_BOT_TOKEN}\';|" ${NOTIFYFN}
 fi
 if [ ! -z "${TG_USER_ID}" ]; then
-    sed -i "s|^let TG_USER_ID.*|let TG_USER_ID = ${TG_USER_ID};|" ${NOTIFYFN}
+    sed -i "s|^let TG_USER_ID.*|let TG_USER_ID = \'${TG_USER_ID}\';|" ${NOTIFYFN}
 fi
 if [ ! -z "${DD_BOT_TOKEN}" ]; then
-    sed -i "s|^let DD_BOT_TOKEN.*|let DD_BOT_TOKEN = ${DD_BOT_TOKEN};|" ${NOTIFYFN}
+    sed -i "s|^let DD_BOT_TOKEN.*|let DD_BOT_TOKEN = \'${DD_BOT_TOKEN}\';|" ${NOTIFYFN}
 fi
 if [ ! -z "${DD_BOT_SECRET}" ]; then
-    sed -i "s|^let DD_BOT_SECRET.*|let DD_BOT_SECRET = ${DD_BOT_SECRET};|" ${NOTIFYFN}
+    sed -i "s|^let DD_BOT_SECRET.*|let DD_BOT_SECRET = \'${DD_BOT_SECRET}\';|" ${NOTIFYFN}
 fi
 if [ ! -z "${IGOT_PUSH_KEY}" ]; then
-    sed -i "s|^let IGOT_PUSH_KEY.*|let IGOT_PUSH_KEY = ${IGOT_PUSH_KEY};|" ${NOTIFYFN}
+    sed -i "s|^let IGOT_PUSH_KEY.*|let IGOT_PUSH_KEY = \'${IGOT_PUSH_KEY}\';|" ${NOTIFYFN}
 fi
 
 # Load ShareCodes
@@ -95,17 +95,11 @@ SMFN=/scripts/jdSuperMarketShareCodes.js
 bashio::log.info "Setting Fruit Share Codes..."
 sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${FFN}
 sed -i "1s|^|\]\n|" ${FFN}
-if [ ! -z "$(bashio::config 'sharecodes.fruit[1]')" ]; then
-    value=$(bashio::config "sharecodes.fruit[1]")
-else
-    value=535a7bfc56e1468e8c09f2657ea04e3b
-fi
+value=$(bashio::config "sharecodes.fruit[1]")
+[ "${value}" == "null" ] && value='535a7bfc56e1468e8c09f2657ea04e3b'
 sed -i "1s|^|  \'${value}\'\n|" ${FFN}
-if [ ! -z "$(bashio::config 'sharecodes.fruit[0]')" ]; then
-    value=$(bashio::config "sharecodes.fruit[0]")
-else
-    value=535a7bfc56e1468e8c09f2657ea04e3b
-fi
+value=$(bashio::config "sharecodes.fruit[0]")
+[ "${value}" == "null" ] && value='535a7bfc56e1468e8c09f2657ea04e3b'
 sed -i "1s|^|  \'${value}\'\,\n|" ${FFN}
 sed -i "1s|^|let FruitShareCodes = \[\n|" ${FFN}
 
@@ -113,17 +107,11 @@ sed -i "1s|^|let FruitShareCodes = \[\n|" ${FFN}
 bashio::log.info "Setting Pet Share Codes..."
 sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${PFN}
 sed -i "1s|^|\]\n|" ${PFN}
-if [ ! -z "$(bashio::config 'sharecodes.pet[1]')" ]; then
-    value=$(bashio::config "sharecodes.pet[1]")
-else
-    value="MTE1NDQ5MzYwMDAwMDAwMzgyNDA5NTU="
-fi
+value=$(bashio::config "sharecodes.pet[1]")
+[ "${value}" == "null" ] && value="MTE1NDQ5MzYwMDAwMDAwMzgyNDA5NTU="
 sed -i "1s|^|  \'${value}\'\n|" ${PFN}
-if [ ! -z "$(bashio::config 'sharecodes.pet[0]')" ]; then
-    value=$(bashio::config "sharecodes.pet[0]")
-else
-    value="MTE1NDQ5MzYwMDAwMDAwMzgyNDA5NTU="
-fi
+value=$(bashio::config "sharecodes.pet[0]")
+[ "${value}" == "null" ] && value="MTE1NDQ5MzYwMDAwMDAwMzgyNDA5NTU="
 sed -i "1s|^|  \'${value}\'\,\n|" ${PFN}
 sed -i "1s|^|let PetShareCodes = \[\n|" ${PFN}
 
@@ -131,17 +119,11 @@ sed -i "1s|^|let PetShareCodes = \[\n|" ${PFN}
 bashio::log.info "Setting PlantBean Share Codes..."
 sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${PBFN}
 sed -i "1s|^|\]\n|" ${PBFN}
-if [ ! -z "$(bashio::config 'sharecodes.plantbean[1]')" ]; then
-    value=$(bashio::config "sharecodes.plantbean[1]")
-else
-    value=7i2k65oy4qkh53m4dkp6ybeg6y
-fi
+value=$(bashio::config "sharecodes.plantbean[1]")
+[ "${value}" == "null" ] && value='7i2k65oy4qkh53m4dkp6ybeg6y'
 sed -i "1s|^|  \'${value}\'\n|" ${PBFN}
-if [ ! -z "$(bashio::config 'sharecodes.plantbean[0]')" ]; then
-    value=$(bashio::config "sharecodes.plantbean[0]")
-else
-    value=7i2k65oy4qkh53m4dkp6ybeg6y
-fi
+value=$(bashio::config "sharecodes.plantbean[0]")
+[ "${value}" == "null" ] && value='7i2k65oy4qkh53m4dkp6ybeg6y'
 sed -i "1s|^|  \'${value}\'\,\n|" ${PBFN}
 sed -i "1s|^|let PlantBeanShareCodes = \[\n|" ${PBFN}
 
@@ -149,17 +131,11 @@ sed -i "1s|^|let PlantBeanShareCodes = \[\n|" ${PBFN}
 bashio::log.info "Setting SuperMarket Share Codes..."
 sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${SMFN}
 sed -i "1s|^|\]\n|" ${SMFN}
-if [ ! -z "$(bashio::config 'sharecodes.supermarket[1]')" ]; then
-    value=$(bashio::config "sharecodes.supermarket[1]")
-else
-    value=eU9YaejjYv4g8T2EwnsVhQ
-fi
+value=$(bashio::config "sharecodes.supermarket[1]")
+[ "${value}" == "null" ] && value='eU9YaejjYv4g8T2EwnsVhQ'
 sed -i "1s|^|  \'${value}\'\n|" ${SMFN}
-if [ ! -z "$(bashio::config 'sharecodes.supermarket[0]')" ]; then
-    value=$(bashio::config "sharecodes.supermarket[0]")
-else
-    value=eU9YaejjYv4g8T2EwnsVhQ
-fi
+value=$(bashio::config "sharecodes.supermarket[0]")
+[ "${value}" == "null" ] && value='eU9YaejjYv4g8T2EwnsVhQ'
 sed -i "1s|^|  \'${value}\'\,\n|" ${SMFN}
 sed -i "1s|^|let SuperMarketShareCodes = \[\n|" ${SMFN}
 

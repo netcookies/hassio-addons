@@ -3,7 +3,7 @@ FROM $BUILD_FROM
 MAINTAINER Isulew <netcookies@gmail.com>
 
 ENV LANG C.UTF-8
-ENV TZ Asia/Shanghai
+ENV TZ CST-8
 
 COPY rootfs /
 

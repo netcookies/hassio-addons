@@ -7,14 +7,14 @@ ENV TZ Asia/Shanghai
 
 RUN set -ex \
         && apk update && apk upgrade\
-        && apk add --no-cache tzdata git nodejs npm sed\
+        && apk add --no-cache tzdata git nodejs npm sed
 
 COPY rootfs /
 
 RUN git clone https://github.com/lxk0301/scripts /scripts \
         && cd /scripts \
         && mkdir logs \
-        && npm install
+        && npm install \
         && chmod a+x /*.sh
 
 WORKDIR /scripts

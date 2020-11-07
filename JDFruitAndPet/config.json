@@ -123,56 +123,16 @@
       ],
       "sharecodes": {
           "primary": {
-              "fruit": [
-                  {
-                      "name": "match(^([A-Z0-9_])+$)?",
-                      "value": "str?"
-                  }
-              ],
-              "pet": [
-                  {
-                      "name": "match(^([A-Z0-9_])+$)?",
-                      "value": "str?"
-                  }
-              ],
-              "plantbean": [
-                  {
-                      "name": "match(^([A-Z0-9_])+$)?",
-                      "value": "str?"
-                  }
-              ],
-              "supermarket": [
-                  {
-                      "name": "match(^([A-Z0-9_])+$)?",
-                      "value": "str?"
-                  }
-              ]
+              "fruit": ["str?"],
+              "pet": ["str?"],
+              "plantbean": ["str?"],
+              "supermarket": ["str?"]
           },
           "secondary": {
-              "fruit": [
-                  {
-                      "name": "match(^([A-Z0-9_])+$)?",
-                      "value": "str?"
-                  }
-              ],
-              "pet": [
-                  {
-                      "name": "match(^([A-Z0-9_])+$)?",
-                      "value": "str?"
-                  }
-              ],
-              "plantbean": [
-                  {
-                      "name": "match(^([A-Z0-9_])+$)?",
-                      "value": "str?"
-                  }
-              ],
-              "supermarket": [
-                  {
-                      "name": "match(^([A-Z0-9_])+$)?",
-                      "value": "str?"
-                  }
-              ]
+              "fruit": ["str?"],
+              "pet": ["str?"],
+              "plantbean": ["str?"],
+              "supermarket": ["str?"]
           }
       }
   },

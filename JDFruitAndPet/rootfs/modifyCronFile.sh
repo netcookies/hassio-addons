@@ -18,8 +18,8 @@ ENVS=''
 for var in $(bashio::config 'env_vars|keys'); do
     name=$(bashio::config "env_vars[${var}].name")
     value=$(bashio::config "env_vars[${var}].value")
-    bashio::log.info "Setting ${name} to ${value}..."
     if [ ! -z "${value}" ]; then
+        bashio::log.info "Setting ${name} to ${value}..."
         ENVS="${name}=""'""${value}""' "${ENVS}
     fi
 done
@@ -147,7 +147,7 @@ sed -i "1s|^|let PlantBeanShareCodes = \[\n|" ${PBFN}
 
 # SuperMarketShareCodes
 bashio::log.info "Setting SuperMarket Share Codes..."
-sed -i"/^let.*ShareCodes = \[/,/^\]$/d" ${SMFN}
+sed -i "/^let.*ShareCodes = \[/,/^\]$/d" ${SMFN}
 sed -i "1s|^|\]\n|" ${SMFN}
 if [ ! -z "$(bashio::config 'sharecodes.supermarket[1]')" ]; then
     value=$(bashio::config "sharecodes.supermarket[1]")

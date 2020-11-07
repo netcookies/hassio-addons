@@ -9,6 +9,20 @@
   "options": {
       "CRONTAB_LIST_FILE": "crontab_list.sh",
       "ENABLE_JD_BEAN": false,
+      "sharecodes": {
+          "primary": {
+              "fruit": [],
+              "pet": [],
+              "plantbean": [],
+              "supermarket": []
+          },
+          "secondary": {
+              "fruit": [],
+              "pet": [],
+              "plantbean": [],
+              "supermarket": []
+          }
+      },
       "env_vars": [
           {
               "name": "JD_COOKIE",
@@ -86,21 +100,7 @@
               "name": "JD_DEBUG",
               "value": "true"
           }
-      ],
-      "sharecodes": {
-          "primary": {
-              "fruit": [],
-              "pet": [],
-              "plantbean": [],
-              "supermarket": []
-          },
-          "secondary": {
-              "fruit": [],
-              "pet": [],
-              "plantbean": [],
-              "supermarket": []
-          }
-      }
+      ]
   },
   "schema": {
       "CRONTAB_LIST_FILE": "str",
@@ -115,12 +115,6 @@
           "DD_BOT_SECRET": "str?",
           "IGOT_PUSH_KEY": "str?"
       },
-      "env_vars": [
-          {
-              "name": "match(^([A-Z0-9_])+$)",
-              "value": "str"
-          }
-      ],
       "sharecodes": {
           "primary": {
               "fruit": ["str?"],
@@ -134,7 +128,13 @@
               "plantbean": ["str?"],
               "supermarket": ["str?"]
           }
-      }
+      },
+      "env_vars": [
+          {
+              "name": "match(^([A-Z0-9_])+$)",
+              "value": "str"
+          }
+      ]
   },
   "image": "netcookies/{arch}-addon-jd-fruit-and-pet"
 }

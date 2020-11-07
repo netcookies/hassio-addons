@@ -10,18 +10,10 @@
       "CRONTAB_LIST_FILE": "crontab_list.sh",
       "ENABLE_JD_BEAN": false,
       "sharecodes": {
-          "primary": {
-              "fruit": [],
-              "pet": [],
-              "plantbean": [],
-              "supermarket": []
-          },
-          "secondary": {
-              "fruit": [],
-              "pet": [],
-              "plantbean": [],
-              "supermarket": []
-          }
+          "fruit": [],
+          "pet": [],
+          "plantbean": [],
+          "supermarket": []
       },
       "env_vars": [
           {
@@ -116,18 +108,10 @@
           "IGOT_PUSH_KEY": "str?"
       },
       "sharecodes": {
-          "primary": {
-              "fruit": ["str?"],
-              "pet": ["str?"],
-              "plantbean": ["str?"],
-              "supermarket": ["str?"]
-          },
-          "secondary": {
-              "fruit": ["str?"],
-              "pet": ["str?"],
-              "plantbean": ["str?"],
-              "supermarket": ["str?"]
-          }
+          "fruit": ["str?"],
+          "pet": ["str?"],
+          "plantbean": ["str?"],
+          "supermarket": ["str?"]
       },
       "env_vars": [
           {

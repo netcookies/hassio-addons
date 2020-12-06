@@ -28,6 +28,7 @@ done
 bashio::log.info "Updating repo..."
 git -C /scripts/ fetch --all
 git -C /scripts/ reset --hard origin/master
+git -C /scripts/ checkout master
 
 
 # custom crond files

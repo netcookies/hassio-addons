@@ -12,8 +12,8 @@ RUN set -ex \
 COPY rootfs /
 
 RUN git clone https://github.com/lxk0301/jd_scripts /scripts \
-        && git checkout master \
         && cd /scripts \
+        && git checkout master \
         && mkdir logs \
         && npm install \
         && chmod a+x /*.sh

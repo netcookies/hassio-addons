@@ -142,7 +142,7 @@ setShareCodes "${PBFN}" "PlantBean" "7i2k65oy4qkh53m4dkp6ybeg6y"
 # SuperMarketShareCodes
 setShareCodes "${SMFN}" "SuperMarket" "eU9YaejjYv4g8T2EwnsVhQ"
 # JxStoryShareCodes
-#setShareCodesV2 "${JXSFN}" "JxStory" "WBeLvJj4gUCdXo2PmMSHXQ=="
+setShareCodesV2 "${JXSFN}" "JxStory" "WBeLvJj4gUCdXo2PmMSHXQ=="
 # FactoryShareCodes
 setShareCodesV2 "${DDFFN}" "Factory" "P04z54XCjVWnYaS5mtdTDOngicTwC4"
 # DreamFactoryShareCodes

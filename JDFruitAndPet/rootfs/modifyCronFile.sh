@@ -89,6 +89,9 @@ FFN=/scripts/jdFruitShareCodes.js
 PFN=/scripts/jdPetShareCodes.js
 PBFN=/scripts/jdPlantBeanShareCodes.js
 SMFN=/scripts/jdSuperMarketShareCodes.js
+JXSFN=/scripts/jdJxStoryShareCodes.js
+DDFFN=/scripts/jdFactoryShareCodes.js
+DFFN=/scripts/jdDreamFactoryShareCodes.js
 
 function setShareCodes () {
     FN=$1 # file name
@@ -110,6 +113,26 @@ function setShareCodes () {
     sed -i "1s|^|let ${SHARETYPE}ShareCodes = \[\n|" ${FN}
 }
 
+function setShareCodesV2 () {
+    FN=$1 # file name
+    SHARETYPE=$2 # ex: Fruit
+    BACKUPVAR=$3 # ex: 535a7bfc56e1468e8c09f2657ea04e3b
+    CODES=""
+    LENGTH=$(bashio::config "sharecodes.${SHARETYPE,,}|length")
+    [ ${LENGTH} -lt 2 ] && LENGTH=2
+    let LENGTH-=1
+    bashio::log.info "Setting ${SHARETYPE} Share Codes..."
+    sed -i "/^let shareCodes = \[/,/^\]$/d" ${FN}
+    sed -i "1s|^|\]\n|" ${FN}
+    for var in $(seq 0 ${LENGTH}); do
+        value=$(bashio::config "sharecodes.${SHARETYPE,,}[${var}]")
+        [ "${value}" == "null" ] && value="${BACKUPVAR}"
+        CODES=${CODES}"  '"${value}"',\n"
+    done
+    sed -i "1s|^|${CODES}|" ${FN}
+    sed -i "1s|^|let shareCodes = \[\n|" ${FN}
+}
+
 # FruitShareCodes
 setShareCodes "${FFN}" "Fruit" "535a7bfc56e1468e8c09f2657ea04e3b"
 # PetShareCodes
@@ -118,3 +141,9 @@ setShareCodes "${PFN}" "Pet" "MTE1NDQ5MzYwMDAwMDAwMzgyNDA5NTU="
 setShareCodes "${PBFN}" "PlantBean" "7i2k65oy4qkh53m4dkp6ybeg6y"
 # SuperMarketShareCodes
 setShareCodes "${SMFN}" "SuperMarket" "eU9YaejjYv4g8T2EwnsVhQ"
+# JxStoryShareCodes
+#setShareCodesV2 "${JXSFN}" "JxStory" "WBeLvJj4gUCdXo2PmMSHXQ=="
+# FactoryShareCodes
+setShareCodesV2 "${DDFFN}" "Factory" "P04z54XCjVWnYaS5mtdTDOngicTwC4"
+# DreamFactoryShareCodes
+setShareCodesV2 "${DFFN}" "DreamFactory" "WBeLvJj4gUCdXo2PmMSHXQ=="

@@ -1,6 +1,6 @@
 {
   "name": "JD Fruit and Pet",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "slug": "jd_fruit_and_pet",
   "description": "Automate scripts of JD Fruit and Pet.",
   "arch": ["armhf","armv7","aarch64","amd64","i386"],
@@ -13,7 +13,10 @@
           "fruit": [],
           "pet": [],
           "plantbean": [],
-          "supermarket": []
+          "supermarket": [],
+          "jxstory": [],
+          "factory": [],
+          "dreamfactory": []
       },
       "env_vars": [
           {
@@ -111,7 +114,10 @@
           "fruit": ["str?"],
           "pet": ["str?"],
           "plantbean": ["str?"],
-          "supermarket": ["str?"]
+          "supermarket": ["str?"],
+          "jxstory": ["str?"],
+          "factory": ["str?"],
+          "dreamfactory": ["str?"]
       },
       "env_vars": [
           {

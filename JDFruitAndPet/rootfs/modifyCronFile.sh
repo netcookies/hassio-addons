@@ -39,7 +39,7 @@ fi
 cp /scripts/docker/crontab_list.sh ${CNF}
 
 # add this scripts to crontab 52 */1 * * *
-sed -i '1s|^|52 \*\/1 \* \* \* cd \/;.\/modifyCronFile.sh > \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2/g' ${CNF}
+sed -i '1s|^|52 \*\/1 \* \* \* cd \/;.\/modifyCronFile.sh > \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2|' ${CNF}
 # Force timezone to CST-8
 sed -i "1s|^|CRON_TZ\=\'CST\-8\'\n|" ${CNF}
 

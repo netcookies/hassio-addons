@@ -99,6 +99,10 @@ function setShareCodes () {
     BACKUPVAR=$3 # ex: 535a7bfc56e1468e8c09f2657ea04e3b
     CODES=""
     LENGTH=$(bashio::config "sharecodes.${SHARETYPE,,}|length")
+    if [ ! -f ${FN} ]; then
+        bashio::log.info "File ${FN} not exists..."
+        return 0;
+    fi
     [ ${LENGTH} -lt 2 ] && LENGTH=2
     let LENGTH-=1
     bashio::log.info "Setting ${SHARETYPE} Share Codes..."
@@ -119,6 +123,10 @@ function setShareCodesV2 () {
     BACKUPVAR=$3 # ex: 535a7bfc56e1468e8c09f2657ea04e3b
     CODES=""
     LENGTH=$(bashio::config "sharecodes.${SHARETYPE,,}|length")
+    if [ ! -f ${FN} ]; then
+        bashio::log.info "File ${FN} not exists..."
+        return 0;
+    fi
     [ ${LENGTH} -lt 2 ] && LENGTH=2
     let LENGTH-=1
     bashio::log.info "Setting ${SHARETYPE} Share Codes..."
@@ -142,7 +150,7 @@ setShareCodes "${PBFN}" "PlantBean" "7i2k65oy4qkh53m4dkp6ybeg6y"
 # SuperMarketShareCodes
 setShareCodes "${SMFN}" "SuperMarket" "eU9YaejjYv4g8T2EwnsVhQ"
 # JxStoryShareCodes
-setShareCodesV2 "${JXSFN}" "JxStory" "WBeLvJj4gUCdXo2PmMSHXQ=="
+#setShareCodesV2 "${JXSFN}" "JxStory" "WBeLvJj4gUCdXo2PmMSHXQ=="
 # FactoryShareCodes
 setShareCodesV2 "${DDFFN}" "Factory" "P04z54XCjVWnYaS5mtdTDOngicTwC4"
 # DreamFactoryShareCodes

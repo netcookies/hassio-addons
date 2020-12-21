@@ -51,9 +51,6 @@ sed -i '/crontab/d' ${CNF}
 sed -i '/default_task/d' ${CNF}
 sed -i '/git pull/d' ${CNF}
 
-# add this scripts to crontab 52 */1 * * *
-sed -i 's/\(.*\)git.*pull.*/30 \*\/1 \* \* \* cd \/;.\/modifyCronFile.sh > \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2/g' ${CNF}
-
 # enable JD Bean sign 
 if [ ! ${ENABLE_JD_BEAN} ]; then
     sed -i '/jd_bean_sign.js/d' ${CNF}

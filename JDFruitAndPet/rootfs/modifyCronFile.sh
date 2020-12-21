@@ -38,6 +38,8 @@ if [ -f "/${CRONTAB_LIST_FILE}" ]; then
 fi
 cp /scripts/docker/crontab_list.sh ${CNF}
 
+# add this scripts to crontab 52 */1 * * *
+sed -i '1s|^|52 \*\/1 \* \* \* cd \/;.\/modifyCronFile.sh > \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2/g' ${CNF}
 # Force timezone to CST-8
 sed -i "1s|^|CRON_TZ\=\'CST\-8\'\n|" ${CNF}
 
@@ -46,8 +48,10 @@ sed -i 's/>> \/scripts\/logs\/.*.log 2>&1/> \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2
 
 # Remove crontab line
 sed -i '/crontab/d' ${CNF}
+sed -i '/default_task/d' ${CNF}
+sed -i '/git pull/d' ${CNF}
 
-# add this scripts to crontab
+# add this scripts to crontab 52 */1 * * *
 sed -i 's/\(.*\)git.*pull.*/30 \*\/1 \* \* \* cd \/;.\/modifyCronFile.sh > \/proc\/1\/fd\/1 2> \/proc\/1\/fd\/2/g' ${CNF}
 
 # enable JD Bean sign 

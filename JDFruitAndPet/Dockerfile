@@ -11,7 +11,7 @@ RUN set -ex \
 
 COPY rootfs /
 
-RUN git clone https://github.com/lxk0301/jd_scripts /scripts \
+RUN git clone https://gitee.com/lxk0301/jd_scripts.git /scripts \
         && cd /scripts \
         && git checkout master \
         && mkdir logs \
